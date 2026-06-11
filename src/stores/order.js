@@ -2,6 +2,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost/round68/VUE3/R68-Vue3/class08/routing/apis/'
+
 export const useOrderStore = defineStore('order', () => {
   // ── State ────────────────────────────────────────────
   const orders = ref([])           // [{ id, items, total_items, total_price, status, created_at }, ...]
@@ -39,7 +41,7 @@ export const useOrderStore = defineStore('order', () => {
     error.value = null
     try {
       const response = await fetch(
-        'http://localhost/round68/VUE3/R68-Vue3/class08/routing/apis/order.php',
+        `${API_URL}order.php`,
         {
           method: 'GET',
           headers: {

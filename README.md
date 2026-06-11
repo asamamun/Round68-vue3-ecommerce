@@ -140,7 +140,7 @@ VITE v4.x ready in xxx ms
 
 ## ⚙️ Environment Configuration
 
-### Frontend (`.env.local`)
+### Frontend (`.env`)
 
 Place this file in the **root directory** (same level as `package.json`):
 
@@ -148,7 +148,11 @@ Place this file in the **root directory** (same level as `package.json`):
 VITE_API_URL=http://localhost/round68/VUE3/R68-Vue3/class08/routing/apis/
 ```
 
-This URL is used in `src/stores/auth.js` to communicate with the backend.
+This URL is used throughout the application to communicate with the backend API endpoints. Change this value to point to your backend when deploying to different environments.
+
+**Available environments**:
+- Development: `http://localhost/round68/VUE3/R68-Vue3/class08/routing/apis/`
+- Production: Update with your production API domain
 
 ### Backend (`apis/.env`)
 

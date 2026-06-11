@@ -99,6 +99,8 @@ import { useOrderStore } from '../stores/order'
 import { useRouter } from 'vue-router'
 import { showToast } from '../utils/toast'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost/apis/'
+
 const cartStore = useCartStore()
 const authStore = useAuthStore()
 const orderStore = useOrderStore()
@@ -123,7 +125,7 @@ async function confirmOrder() {
     }))
 
     // Call the backend order API
-    const response = await fetch('http://localhost/round68/VUE3/R68-Vue3/class08/routing/apis/order.php', {
+    const response = await fetch(`${API_URL}order.php`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

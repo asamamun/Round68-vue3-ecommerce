@@ -212,6 +212,8 @@ import { ref, onMounted } from 'vue'
 import { useAuthStore } from '../stores/auth'
 import { showToast } from '../utils/toast'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost/apis/'
+
 const authStore = useAuthStore()
 const orders = ref([])
 const loading = ref(false)
@@ -223,7 +225,7 @@ const invoiceRef = ref(null)
 async function fetchOrders() {
   loading.value = true
   try {
-    const response = await fetch('http://localhost/round68/VUE3/R68-Vue3/class08/routing/apis/order.php', {
+    const response = await fetch(`${API_URL}order.php`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${authStore.accessToken}`
@@ -417,7 +419,7 @@ function downloadInvoice() {
 // Update order status (Admin only)
 async function updateOrderStatus(orderId, newStatus) {
   try {
-    const response = await fetch('http://localhost/round68/VUE3/R68-Vue3/class08/routing/apis/order.php', {
+    const response = await fetch(`${API_URL}order.php`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
